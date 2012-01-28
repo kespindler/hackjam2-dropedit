@@ -48,9 +48,13 @@ def viewfiles(path = '.'):
     access_token = TOKEN_STORE[access_token_key]
     client = get_client(access_token)
     context = client.metadata(path)
-    host = bottle.request.headers['host']
-    page_name = 'http://' + host + '/viewfiles'
-    return pystache2.render_file('viewfiles', context, page_name = page_name)
+    if context['is_dir']:
+        host = bottle.request.headers['host']
+        page_name = 'http://' + host + '/viewfiles'
+        return pystache2.render_file('viewfiles', context, page_name = page_name)
+    else:
+        filedata = client.get_file(path)
+        return filedata
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
