@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import bottle
-import pystache
+import pystache2
 import dropbox
 
 bottle.debug(True)
@@ -9,9 +9,6 @@ route = bottle.route
 APP_KEY = 'jnnvrfjja25d4fh'
 APP_SECRET = 'ocbg2kf2oqtme2p'
 ACCESS_TYPE = 'dropbox'
-
-template_loader = pystache.loader.Loader()
-template_loader.template_path = 'views'
 
 HOST = None # override this if the server complains about missing Host headers
 TOKEN_STORE = {}
@@ -47,12 +44,11 @@ def callback():
 
 @route('/viewfiles/<path:path>')
 def viewfiles(path = ''):
-    import pdb;pdb.set_trace()
     access_token_key = bottle.request.get_cookie('access_token_key')
     access_token = TOKEN_STORE[access_token_key]
     client = get_client(access_token)
     context = client.metadata('.' + path)
-    return template_loader.load_template('viewfiles').render(context)
+    return pystache2.render_file('viewfiles', context)
 
 @route('/static/<filepath:path>')
 def server_static(filepath):

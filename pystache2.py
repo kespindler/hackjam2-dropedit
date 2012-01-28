@@ -1,5 +1,4 @@
 # pystache2.py
-# (c) 2011 Kurt Spindler
 #
 # A (currently incomplete implemtation of the mustache2.0 spec in python (https://github.com/mustache/spec)
 # Works quite well for the most part, but definitely does not pass all tests in the spec
@@ -44,7 +43,6 @@ _ACTION_AND_KEY = re.compile('^([&#\^/>]?) *([a-z\._]+) *$', re.I)
 def _render(string, context):
     string = '\n' + string #marker for beginning of string
     item_queue = _ITEMIZER.split(string)
-    import pdb;pdb.set_trace()
     def closing_index_from_tag_at_index(from_index):
         tag = _RE_TAG.match(item_queue[from_index]).group(2)
         action_and_key = _ACTION_AND_KEY.match(tag)
@@ -110,7 +108,6 @@ def _render(string, context):
                 i += 1
                 continue
             action_and_key = _ACTION_AND_KEY.match(tag)
-            import pdb;pdb.set_trace()
             action = action_and_key.group(1)
             key = action_and_key.group(2)
             context_value = context_lookup(key, current_context, context)
