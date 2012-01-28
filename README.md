@@ -40,6 +40,7 @@ _Turn hello world into hello, name_
 
 ## 4. Add Dropbox authentication
 
+Create a Dropbox application.
 _Fun with OAuth_
 
 ## 5. Make the /login page
