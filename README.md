@@ -20,8 +20,8 @@ Now that you're pumped up to get started, here are some quick tips for when you 
  - If you've asked several people and are getting stuck, consider asking one of these awesome people for help:
  - <table><tr><td><img src="http://a4.sphotos.ak.fbcdn.net/hphotos-ak-ash4/404538_10150513294741510_659756509_9200351_1366359412_n.jpg" width="200" height="auto"></td>
  <td><img src="http://a2.sphotos.ak.fbcdn.net/hphotos-ak-snc7/305492_10150364954364573_516544572_7885545_1515202994_n.jpg" width="200" height="auto"></td>
- <td><img src="http://a3.sphotos.ak.fbcdn.net/hphotos-ak-snc7/378155_2381360535508_1295520723_32462104_1169991459_n.jpg" width="200" height="auto"></td>
  <td><img src="http://a7.sphotos.ak.fbcdn.net/hphotos-ak-snc7/384004_2411869338209_1295520723_32474578_382624553_n.jpg" width="200" height="auto"></td>
+ <td><img src="http://a3.sphotos.ak.fbcdn.net/hphotos-ak-snc7/378155_2381360535508_1295520723_32462104_1169991459_n.jpg" width="200" height="auto"></td>
  </tr><tr><td>Kurt Spindler</td><td>Nelson Zhang</td><td>Michelle Bu</td><td>Eric Zhang</td></tr></table>
 
 You'll need to install Python. If you've never used Python before and you've had something missing in your life, Python is probably the answer. 
