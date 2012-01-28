@@ -42,12 +42,7 @@ Dropbox is a wonderful company for any number of reasons - not least of which be
 
 1. Dropbox keeps a record of your app to ensure security. You'll first need to create an app with Dropbox in order to use their services. Go [here](https://www.dropbox.com/developers/apps) to create your app on Dropbox.
 2. You'll need the Dropbox Python library. I included it in the Github files to make your life a bit easier, but feel free to install it yourself if you want the satisfaction of doing everything yourself.
-3. Check out the example that Dropbox uses, either in the zip that you downloaded from Dropbox, or from the dropbox-examples folder from this Github.
-
-Parts of this example are actually going to form the first pages of your application.
-
-Create a Dropbox application.
-_Fun with OAuth_
+3. Check out the example that Dropbox uses, either in the zip that you downloaded from Dropbox, or from the dropbox-examples folder from this Github. Open up web_upload_example.py and put in the two authentication keys Dropbox gave you - the app_key and the app_secret. Run their demo using `python web_upload_example.py` and see what functionality it provides. Now, take a look at the actual file, and try to figure out what Dropbox did to build their application. Parts of this example are actually going to form the first pages of your application, so pay special attention to the login page!
 
 ## 4. Learn Mustache (template language)
 
