@@ -44,6 +44,11 @@ Dropbox is a wonderful company for any number of reasons - not least of which be
 2. You'll need the Dropbox Python library. I included it in the Github files to make your life a bit easier, but feel free to install it yourself if you want the satisfaction of doing everything yourself.
 3. Check out the example that Dropbox uses, either in the zip that you downloaded from Dropbox, or from the dropbox-examples folder from this Github. Open up web_upload_example.py and put in the two authentication keys Dropbox gave you - the app_key and the app_secret. Run their demo using `python web_upload_example.py` and see what functionality it provides. Now, take a look at the actual file, and try to figure out what Dropbox did to build their application. Parts of this example are actually going to form the first pages of your application, so pay special attention to the login page!
 
+## 4. Start Building Your Web App!
+
+Alright, so here's where we get down and dirty and actually start to build your web app. Here, it's gonna start becoming a bit more free form, so feel free to try thingsqStart with a new version of the bottle.py Hello World application.
+
+Instead of Hello 
 ## 4. Learn Mustache (template language)
 
 _Turn hello world into hello, name_
