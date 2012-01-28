@@ -43,12 +43,14 @@ def callback():
     return bottle.redirect('/viewfiles/')
 
 @route('/viewfiles/<path:path>')
-def viewfiles(path = ''):
+def viewfiles(path = '.'):
     access_token_key = bottle.request.get_cookie('access_token_key')
     access_token = TOKEN_STORE[access_token_key]
     client = get_client(access_token)
-    context = client.metadata('.' + path)
-    return pystache2.render_file('viewfiles', context)
+    context = client.metadata(path)
+    host = bottle.request.headers['host']
+    page_name = 'http://' + host + '/viewfiles'
+    return pystache2.render_file('viewfiles', context, page_name = page_name)
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
