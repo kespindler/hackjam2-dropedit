@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+import bottle
+import pystache
+import dropbox
+
+bottle.debug(True)
+route = bottle.route
+
+APP_KEY = 'jnnvrfjja25d4fh'
+APP_SECRET = 'ocbg2kf2oqtme2p'
+ACCESS_TYPE = 'dropbox'
+
+template_loader = pystache.loader.Loader()
+template_loader.template_path = 'views'
+
+HOST = None # override this if the server complains about missing Host headers
+TOKEN_STORE = {}
+
+def get_session():
+    return dropbox.session.DropboxSession(APP_KEY, APP_SECRET, ACCESS_TYPE)
+
+def get_client(access_token):
+    sess = get_session()
+    sess.set_token(access_token.key, access_token.secret)
+    return dropbox.client.DropboxClient(sess)
+
+@route('/')
+def index():
+    sess = get_session()
+    request_token = sess.obtain_request_token()
+    TOKEN_STORE[request_token.key] = request_token
+    host = bottle.request.headers['host']
+    callback = "http://%s/callback" % (host)
+    url = sess.build_authorize_url(request_token, oauth_callback=callback)
+    prompt = """Click <a href="%s">here</a> to link with Dropbox.""" % url
+    return prompt
+
+@route('/callback')
+def callback():
+    sess = get_session()
+    oauth_token = bottle.request.params.oauth_token
+    request_token = TOKEN_STORE[oauth_token]
+    access_token = sess.obtain_access_token(request_token)
+    TOKEN_STORE[access_token.key] = access_token
+    bottle.response.set_cookie('access_token_key', access_token.key)
+    return bottle.redirect('/viewfiles/')
+
+@route('/viewfiles/<path:path>')
+def viewfiles(path = ''):
+    import pdb;pdb.set_trace()
+    access_token_key = bottle.request.get_cookie('access_token_key')
+    access_token = TOKEN_STORE[access_token_key]
+    client = get_client(access_token)
+    context = client.metadata('.' + path)
+    return template_loader.load_template('viewfiles').render(context)
+
+@route('/static/<filepath:path>')
+def server_static(filepath):
+    return bottle.static_file(filepath, root='./static')
+
+bottle.run(host='localhost', port = 8004, reloader = True)
+
