@@ -25,15 +25,15 @@ Now that you're pumped up to get started, here are some quick tips for when you 
  <td><img src="http://a3.sphotos.ak.fbcdn.net/hphotos-ak-snc7/378155_2381360535508_1295520723_32462104_1169991459_n.jpg" width="200" height="auto"></td>
  </tr><tr><td>Kurt Spindler</td><td>Nelson Zhang</td><td>Michelle Bu</td><td>Eric Zhang</td></tr></table>
 
-You'll need to install Python. If you've never used Python before and you've had something missing in your life, Python is probably the answer. 
+You'll need to install Python. If you've never used Python before and you've had something missing in your life, Python is probably the answer. If so, go download and install Python. That's step 1 for the project. Go!
 
 ## 1. Learn Python
 
-_Go to the tuts and learn some Python_
+Hopefully, you remember some of your Python from 61A. If you've forgotten a bit, head over to the [official Python tutorial](http://docs.python.org/tutorial/) (It's amazing!), and refresh your memory.
 
 ## 2. Learn Bottle (web server)
 
-_Build hello world in Bottle_
+Bottle.py is a library for Python to make websites _extremely_ quickly. Install it, and then write a Hello World from the [Bottle tutorial](http://bottlepy.org/docs/dev/tutorial.html).
 
 ## 3. Learn Mustache (template language)
 
