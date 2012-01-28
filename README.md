@@ -46,7 +46,11 @@ Dropbox is a wonderful company for any number of reasons - not least of which be
 
 ## 4. Start Building Your Web App!
 
-Alright, so here's where we get down and dirty and actually start to build your web app. Here, it's gonna start becoming a bit more free form, so feel free to try thingsqStart with a new version of the bottle.py Hello World application.
+Alright, so here's where we get down and dirty and actually start to build your web app. You're gonna have to start writing some of your own code here. Also, it's gonna start becoming a bit more free form, so feel free to try things that might not work, make mistakes, and generally be willing to try things until they work. Don't give up though!
+
+Start with a new version of the bottle.py Hello World application. Modify it to be a web page with a single link, at first just to Dropbox's homepage
+
+
 
 Instead of Hello 
 ## 4. Learn Mustache (template language)
