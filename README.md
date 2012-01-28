@@ -1,12 +1,12 @@
 # Welcome To HackJam2.0
 
 This is a Your First Hack (YFH) project. It's a full guide to your first hackathon project - from start to finish. This YFH is to create a web-based Dropbox text editor. When you finish this project, you'll have:
- * learned about OAuth, a way for you to securely use other applications (like Dropbox) without having your users give away their username and password.
- * connected your application with the Dropbox API, allowing your application to act exactly like any application that Dropbox creates themselves.
- * created a fully functional web application that other people can use by visiting it's URL.
- * learned a ton of Python and HTML.
- * learned how to use several 3rd party libraries to make your job easier and your project more robust.
- * kicked some serious ass!
+* learned about OAuth, a way for you to securely use other applications (like Dropbox) without having your users give away their username and password.
+* connected your application with the Dropbox API, allowing your application to act exactly like any application that Dropbox creates themselves.
+* created a fully functional web application that other people can use by visiting it's URL.
+* learned a ton of Python and HTML.
+* learned how to use several 3rd party libraries to make your job easier and your project more robust.
+* kicked some serious ass!
 
 Now, let's get started!
 
