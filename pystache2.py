@@ -1,3 +1,20 @@
+# pystache2.py
+# (c) 2011 Kurt Spindler
+#
+# A (currently incomplete implemtation of the mustache2.0 spec in python (https://github.com/mustache/spec)
+# Works quite well for the most part, but definitely does not pass all tests in the spec
+# 
+# Use this library in one of two ways, either with a string or with a file.
+#
+# import pystache2
+# 
+# my_web_page1 = pystache2.render_string('Hello {{name}}, {'name':'Kurt'})
+# assert my_web_page1 == 'Hello Kurt'
+#
+# # Contents of myfile.mustache are 'Welcome to Python, {{programmer}}'
+# my_web_page2 = pystache2.render_file('myfile.mustache', programmer = 'Cassie')
+# assert my_web_page2 == 'Welcome to Python, Cassie'
+#
 import os
 import re
 import markupsafe
