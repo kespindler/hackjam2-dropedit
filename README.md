@@ -106,13 +106,19 @@ The final step to making all your files accessible is to turn each one into a li
 
 It's worth mentioning two valuable tips here. An incredibly powerful statement in python is `import pdb;pdb.set_trace()`. When your server hits that line, the Python interpreter will stop, and you'll be dropped into an interpreter, where you can print out available variables, change the values of variables, do anything you can in normal Python (note that the web page will seem to be frozen in 'loading..' while you're in the debugger. The second tip is a trap that I ran into. The file links didn't work for me unless the URLs that they linked to were prefixed with `http://` - just something to be aware of if you run into the situation where your links don't seem to work for some mysterious reason.
 
-## 8. Make the file page
+## 8. View the contents of files
 
-Now, all that's left to do is load in file data. 
+Now, all that's left to do is load in file data. You could make a new route for it - I chose to do an if statement in /viewfiles/ to see if we're viewing a dictionary or not, and then loading a different template based on that determination. I think either way would probably be fine, but I did find using a single route to be fairly convenient. Your next steps:
 
-## 9. Turn that into a text editor
+1. create that conditional behavior going in `/viewfiles` (maybe there's some metadata you already have that has the answer!).
+2. Find the Dropbox API call to load in file data, and figure out how to use it correctly.
+3. Create a template for file viewing. You'll add editing later. For now, just have an extremely simple template to view the contents of a file.
 
-_Holy crap_
+A short note about the last two points: the object that the Dropbox API returns when requesting a file can be a tad confusing. It's a dictionary, and it contains the key `fp`, which has a value as a file object. You'll need to call `.read()` on this object to get the actual file data out.
+
+## 9. Turn your app into a full-fledged text editor
+
+First, take a minute to enjoy how awesome your web app is. It's really awesome. Go tell the person next to you. Good job. Now, this next step should be pretty easy. Modify your template to display the file contents within an editable [\<textarea\>](http://www.w3schools.com/tags/tag_textarea.asp). Wrap it within a form and add a submit button. Add a reset button for good measure.
 
 ## 10. Add the save button
 
