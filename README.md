@@ -65,24 +65,45 @@ For reference, here is the Dropbox login page.
 
 The reason this page is a bit complicated is because it holds the OAuth (the way Dropbox verifies users) logic for the application. It first creates a key for the user's session, this user's single visit, or session, to your website. Your website then asks Dropbox to verify that user for the duration of their session, and asks you to provide a callback URL that the Dropbox website will bring your user to once they've finished logging in to Dropbox.
 
-You're going to want all this same logic: storing their session token, providing a callback URL, and building the string that creates the webpage for your bottle application. Try to make it work!
+You're going to want all this same logic: storing their session token, providing a callback URL, and building the string that creates the webpage for your bottle application. You should also construct a new route and function for `/callback`, which is the URL you want Dropbox to return you to. This page should also include the same logic as `callback_page()` in the Dropbox example. Try to make it work!
 
-## 4. Learn Mustache (template language)
+## 4. Status Check
 
-Awesome job. So, just a status check, you should now have a basic website, consisting of two pages. The first should present a login link to the user. When that pages loads, it should be doing all the same OAuth work in the background that the Dropbox example does. After the user clicks on that link and goes to Dropbox, Dropbox should redirect the user to a new webpage, call it `/callback`, which doesn't need to do anything yet. Try printing out their 
+Awesome job. So, just a status check, you should now have a basic website, consisting of two pages. The first should present a login link to the user. When that pages loads, it should be doing all the same OAuth work in the background that the Dropbox example does. After the user clicks on that link and goes to Dropbox, Dropbox should redirect the user to a new webpage, call it `/callback`, which should store the data returned from Dropbox, just like the Dropbox example does. Feel free to print out some data on the page for verification. 
 
+If you've made it this far, take a minute to give yourself a huge pat on the back. You've mastered OAuth, creating a web server, using 3rd party libraries, and integrated with Dropbox. Damn good job.
 
-## 5. Make the /login page
+## 5. Make the /viewfiles page
 
-_Woot, first serious big steps_
+Alright, so now we want to do something with the Dropbox integration. Let's make a simple view of all our files. To do this, you should use a templating engine called [mustache](mustache.github.com). It's incredibly powerful, and beautiful as well. Everything is expressed with variable names surrounded by mustaches. {{like this}}. Read about that until you're a little comfortable with it. Then add this line to the top of `app.py`: `import pystache2`. The pystache2.py file is available at this project's Github page. Create a new route in your bottle file to test out using the templates, and get yourself a little comfortable with it. There's documentation on pystache2 within the `pystache2.py` file.
 
-## 6. Make the /viewfiles page
+Now, let's make the `/viewfiles` page. Create this route and function in bottle.
 
-_Damn, your web app actually does something_
+First, we're going to need some data to populate the page with. Within the function for this page, we're going to need to query the Dropbox servers for the list of files in a directory. Check out the following code I wrote.
+
+    access_token_key = bottle.request.get_cookie('access_token_key') #gets the access_token_key from the user's cookies
+    access_token = TOKEN_STORE[access_token_key] #gets the actual access_token from the server's cache `TOKEN_STORE` based on the key on the previous line
+    client = get_client(access_token) #get_client, the function from the Dropbox example code
+    context = client.metadata('.') #client.metadata is the Dropbox library call to get the list of files in the directory. You should look at the documentation of the Dropbox Python library to confirm this.
+
+For now, just have this webpage return `str(context)` and confirm that you're getting the data correctly. If you are, congradulations. Get another big pat on the back, and keep going!
+
+You need to present this data in a more readable fashion - this is where the templates come in. Make a template `viewfiles.mustache`. It should have a mustache section (remember, in mustache, a section is a group that gets repeated or otherwise treated in a special way.) that will display something for every file within a directory. My version displays the name and the date modified, and wraps it within a HTML table. You should look at the keys of the context dictionary to figure out the names of variables you can use in your template.
+
+Once that template is up and running, change your function to have `return pystache2.render_file('viewfiles', context)` instead of just printing the dictionary. Once you get this figured out, this starts looking like a real web app. Awesome!
 
 ## 7. Turn the files into links
 
-_Now it really does something_
+Now, you need to be able to go deeper into Dropbox folders instead of just looking at the root folder. You should add a \<:path\> to the end of the viewfiles route so that it reads
+
+    @bottle.route('/viewfiles/<path:path>')
+    def viewfiles(path = '.'):
+        ...
+
+Now, you have a variable named path available within this function, which reprenents your current location in Dropbox. Change the function to use this path instead of the generic one, and you're one step closer! Sweet!
+
+_Change Things IntoFiles_
+
 
 ## 8. Make the file page
 
