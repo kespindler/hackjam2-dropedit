@@ -40,9 +40,9 @@ def callback():
     access_token = sess.obtain_access_token(request_token)
     TOKEN_STORE[access_token.key] = access_token
     bottle.response.set_cookie('access_token_key', access_token.key)
-    return bottle.redirect('/viewfiles/')
+    return bottle.redirect('/viewpath/')
 
-@route('/viewfiles/<path:path>')
+@route('/viewpath/<path:path>')
 def viewfiles(path = '.'):
     access_token_key = bottle.request.get_cookie('access_token_key')
     access_token = TOKEN_STORE[access_token_key]
@@ -50,11 +50,26 @@ def viewfiles(path = '.'):
     context = client.metadata(path)
     if context['is_dir']:
         host = bottle.request.headers['host']
-        page_name = 'http://' + host + '/viewfiles'
+        page_name = 'http://' + host + '/viewpath'
         return pystache2.render_file('viewfiles', context, page_name = page_name)
     else:
-        filedata = client.get_file(path)
-        return filedata
+        fileobject = client.get_file(path)
+        filedata = fileobject.fp.read(fileobject.length)
+        rev_version = fileobject.version
+        import pdb;pdb.set_trace()
+        return pystache2.render_file('editfile', filedata = filedata, filepath = path, filerev_version = rev_version)
+
+@route('/submitfileupdate', method='POST')
+def submitfileupdate():
+    filedata = bottle.request.params.filearea
+    filepath = bottle.request.params.filepath
+    filerev_version = bottle.request.params.filerev_version
+    filearea.replace('\r\n', '\n')
+    access_token_key = bottle.request.get_cookie('access_token_key')
+    access_token = TOKEN_STORE[access_token_key]
+    client = get_client(access_token)
+    result = client.put_file(filepath, filedata, parent_rev = filerev_version)
+    return 'Update complete!\nmetadata: %s' % str(result)
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
