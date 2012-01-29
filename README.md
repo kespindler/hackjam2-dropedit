@@ -1,6 +1,6 @@
 # Welcome To HackJam2.0
 
-This is a Your First Hack (YFH) project. It's a full guide to your first hackathon project - from start to finish. This YFH is to create a web-based Dropbox text editor. When you finish this project, you'll have:
+This is a Your First Hack (YFH) project. It's a full proposal for what to do during your first hackathon - from start to finish. You'll build your very first web application. And not a dumb one either, but a web application that has some seriously awesome functionality, and you could absolutely use day-to-day. This YFH is to create a web-based Dropbox text editor. When you finish this project, you'll have:
 
 * learned about OAuth, a way for you to securely use other applications (like Dropbox) without having your users give away their username and password.
 * connected your application with the Dropbox API, allowing your application to act exactly like any application that Dropbox creates themselves.
@@ -67,7 +67,6 @@ The reason this page is a bit complicated is because it holds the OAuth (the way
 
 You're going to want all this same logic: storing their session token, providing a callback URL, and building the string that creates the webpage for your bottle application. Try to make it work!
 
-Instead of Hello 
 ## 4. Learn Mustache (template language)
 
 _Turn hello world into hello, name_
