@@ -102,12 +102,13 @@ Now, you need to be able to go deeper into Dropbox folders instead of just looki
 
 Now, you have a variable named path available within this function, which reprenents your current location in Dropbox. Change the function to use this path instead of the generic one, and you're one step closer! Sweet!
 
-_Change Things IntoFiles_
+The final step to making all your files accessible is to turn each one into a link. Go back into the mustache template, and instead of just printing text, each file should turn into a link. Think for a moment about what it should link to. It should display the contents of that subdirectory, and you already have a URL route that displays the contents of a directory. Figure out what your desired result should be, then play with the available strings a bit to get that result.
 
+It's worth mentioning two valuable tips here. An incredibly powerful statement in python is `import pdb;pdb.set_trace()`. When your server hits that line, the Python interpreter will stop, and you'll be dropped into an interpreter, where you can print out available variables, change the values of variables, do anything you can in normal Python (note that the web page will seem to be frozen in 'loading..' while you're in the debugger. The second tip is a trap that I ran into. The file links didn't work for me unless the URLs that they linked to were prefixed with `http://` - just something to be aware of if you run into the situation where your links don't seem to work for some mysterious reason.
 
 ## 8. Make the file page
 
-_Now you can view files, damn!_
+Now, all that's left to do is load in file data. 
 
 ## 9. Turn that into a text editor
 
