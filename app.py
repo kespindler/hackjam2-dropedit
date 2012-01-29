@@ -56,8 +56,7 @@ def viewfiles(path = '.'):
         fileobject = client.get_file(path)
         filedata = fileobject.fp.read(fileobject.length)
         rev_version = fileobject.version
-        import pdb;pdb.set_trace()
-        return pystache2.render_file('editfile', filedata = filedata, filepath = path, filerev_version = rev_version)
+        return pystache2.render_file('editfile', filedata = filedata, filename = path, filerev_version = rev_version)
 
 @route('/submitfileupdate', method='POST')
 def submitfileupdate():

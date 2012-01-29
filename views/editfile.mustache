@@ -1,8 +1,8 @@
-<h1>Edit {{filepath}}</h1>
+<h1>Edit {{filename}}</h1>
 <form action="/submitfileupdate" method="post">
     <textarea name="filearea" rows="40" cols="160">{{filedata}}</textarea><br>
     <input type="hidden" name="file_revversion" value="{{filerev_version}}" />
-    <input type="hidden" name="filepath" value="{{filepath}}" /> 
+    <input type="hidden" name="filepath" value="{{filename}}" /> 
     <input type="submit" value="Save Changes" />
     <input type="reset" value="Cancel Changes" />
 </form>
