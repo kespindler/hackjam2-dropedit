@@ -53,22 +53,24 @@ def viewfiles(path = '.'):
         page_name = 'http://' + host + '/viewpath'
         return pystache2.render_file('viewfiles', context, page_name = page_name)
     else:
+        print context
         fileobject = client.get_file(path)
         filedata = fileobject.fp.read(fileobject.length)
-        rev_version = fileobject.version
-        return pystache2.render_file('editfile', filedata = filedata, filename = path, filerev_version = rev_version)
+        rev_version = context['rev']
+        return pystache2.render_file('editfile', filedata = filedata, filename = path, filerevversion = rev_version)
 
 @route('/submitfileupdate', method='POST')
 def submitfileupdate():
     filedata = bottle.request.params.filearea
     filepath = bottle.request.params.filepath
-    filerev_version = bottle.request.params.filerev_version
+    filerevversion = bottle.request.params.filerevversion
     filedata.replace('\r\n', '\n')
     access_token_key = bottle.request.get_cookie('access_token_key')
     access_token = TOKEN_STORE[access_token_key]
+    print filepath, filedata[:100], filerev_version
     client = get_client(access_token)
-    result = client.put_file(filepath, filedata, parent_rev = filerev_version)
-    return 'Update complete!\nmetadata: %s' % str(result)
+    result = client.put_file(filepath, filedata, parent_rev = filerevversion)
+    return 'Update complete!\r\nmetadata: %s' % str(result)
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
