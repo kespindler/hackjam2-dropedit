@@ -122,17 +122,26 @@ First, take a minute to enjoy how awesome your web app is. It's really awesome. 
 
 ## 10. Add the save button
 
-_On a roll_
+Now, make sure your updates are actually going to work. One thing to understand about Dropbox is that each path has an associated property called 'rev'. It helps Dropbox to resolve differences between files, and you'll need to use it to update files. Create hidden form inputs for both the file path and the rev in your template for the file viewer. That will make your form pass along those parameters, making your life a bit easier. Add a form action to your form as well, which will perform a `POST` to the URL `/submission`. This form is going to pass along any information contained within it's tags from textareas and inputs.
+
+Create a route for `/submission`. Access the form data with the dictionary `bottle.request.params`. Check out the Dropbox library again for how to put an update to a file. Perform that function call within the function for `/submission`, and make sure you pass in the parent_rev parameter as the rev from the metadata of the file you're updating. Once you have all that figured out, breathe for a moment. You're done!
 
 ## 11. The really hard part
 
-_Celebrate! You're done! Tell your neighbors. Get in line to present. Freakin awesome_
+Celebrate! You're done! Tell your neighbors. Get in line to present. Eat some pizza and ice cream! Freakin awesome!
 
 ## 11. Where next?
 
-_Brainstorm what else you could do with this project, or what other things you could build_
-Few ideas:
+Brainstorm what else you could do with this project, or what other things you could build. A few ideas to get you started:
 
 - Your website looks like it's from 1990. Learn some more HTML and some CSS (there are some upcoming H@B events to teach this stuff!). Check out [Twitter Bootstrap](http://twitter.github.com/bootstrap/) for a way to make *beautiful* websites with almost zero work.
 - Add more functionality: rename files, delete files, create files.
+- Make the text editor much more feature-full: syntax highlighting, keyboard shortcuts, the works.
+- Let your imagination run wild!
+
+# Congratulations!
+
+I hope you had a ton of fun. I'd love to hear how it went - send me a message at kespindler -at- gmail. Also, I'd genuinely appreciate your feedback. Let me know what works and what doesn't, and I'll try to make it better for future first time hackers!
+
+# Happy Hacking!
 
