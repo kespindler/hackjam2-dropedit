@@ -67,7 +67,6 @@ def submitfileupdate():
     filedata.replace('\r\n', '\n')
     access_token_key = bottle.request.get_cookie('access_token_key')
     access_token = TOKEN_STORE[access_token_key]
-    print filepath, filedata[:100], filerev_version
     client = get_client(access_token)
     result = client.put_file(filepath, filedata, parent_rev = filerevversion)
     return 'Update complete!\r\nmetadata: %s' % str(result)
