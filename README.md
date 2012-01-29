@@ -104,6 +104,7 @@ _Celebrate! You're done! Tell your neighbors. Get in line to present. Freakin aw
 
 _Brainstorm what else you could do with this project, or what other things you could build_
 Few ideas:
- - Your website looks like it's from 1990. Learn some more HTML and some CSS - upcoming h@b events. Check out [Twitter Bootstrap](http://twitter.github.com/bootstrap/) for a way to make *beautiful* websites with almost zero work.
- - Add more functionality: rename files, delete files, create files.
+
+- Your website looks like it's from 1990. Learn some more HTML and some CSS (there are some upcoming H@B events to teach this stuff!). Check out [Twitter Bootstrap](http://twitter.github.com/bootstrap/) for a way to make *beautiful* websites with almost zero work.
+- Add more functionality: rename files, delete files, create files.
 
