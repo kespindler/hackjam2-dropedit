@@ -63,7 +63,7 @@ def submitfileupdate():
     filedata = bottle.request.params.filearea
     filepath = bottle.request.params.filepath
     filerev_version = bottle.request.params.filerev_version
-    filearea.replace('\r\n', '\n')
+    filedata.replace('\r\n', '\n')
     access_token_key = bottle.request.get_cookie('access_token_key')
     access_token = TOKEN_STORE[access_token_key]
     client = get_client(access_token)
