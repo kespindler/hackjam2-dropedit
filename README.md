@@ -69,7 +69,7 @@ You're going to want all this same logic: storing their session token, providing
 
 ## 4. Learn Mustache (template language)
 
-_Turn hello world into hello, name_
+Awesome job. So, just a status check, you should now have a basic website, consisting of two pages. The first should present a login link to the user. When that pages loads, it should be doing all the same OAuth work in the background that the Dropbox example does. After the user clicks on that link and goes to Dropbox, Dropbox should redirect the user to a new webpage, call it `/callback`, which doesn't need to do anything yet. Try printing out their 
 
 
 ## 5. Make the /login page
