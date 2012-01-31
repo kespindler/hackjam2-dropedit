@@ -2,13 +2,17 @@
 import bottle
 import pystache2
 import dropbox
+import webtools
 
-bottle.debug(True)
+CFG = webtools.ServerConfig()
+
+bottle.debug(CFG.IS_DEV)
+
 route = bottle.route
 
-APP_KEY = 'jnnvrfjja25d4fh'
-APP_SECRET = 'ocbg2kf2oqtme2p'
-ACCESS_TYPE = 'dropbox'
+APP_KEY = CFG.get('dropbox', 'app_key')
+APP_SECRET = CFG.get('dropbox', 'app_secret')
+ACCESS_TYPE = CFG.get('dropbox', 'access_type')
 
 HOST = None # override this if the server complains about missing Host headers
 TOKEN_STORE = {}
@@ -75,5 +79,5 @@ def submitfileupdate():
 def server_static(filepath):
     return bottle.static_file(filepath, root='./static')
 
-bottle.run(host='localhost', port = 8004, reloader = True)
+bottle.run(host='localhost', port = CFG.PORT, reloader = CFG.IS_DEV)
 

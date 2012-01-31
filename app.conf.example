@@ -1,0 +1,9 @@
+[server]
+deployment = dev 
+port = 8003
+
+[dropbox]
+app_key = something
+app_secret = something
+access_type = dropbox
+
